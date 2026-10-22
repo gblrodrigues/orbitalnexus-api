@@ -12,8 +12,9 @@ application {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(26)
 }
+
 dependencies {
     // Ktor
     implementation(ktorLibs.serialization.kotlinx.json)
@@ -47,6 +48,13 @@ dependencies {
     // Logging
     implementation(libs.logback.classic)
 
-    testImplementation(kotlin("test"))
-    testImplementation(ktorLibs.server.testHost)
+    // Tests
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockk)
+    testRuntimeOnly(libs.junit.platform.launcher)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
