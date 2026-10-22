@@ -1,8 +1,8 @@
 # OrbitalNexus API
-![API Version](https://img.shields.io/badge/API-v1.0-blue)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.3-7F52FF)](https://kotlinlang.org/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.4.21-7F52FF)](https://kotlinlang.org/)
 [![Ktor](https://img.shields.io/badge/Ktor-3.5-087CFA)](https://ktor.io/)
 [![Koin](https://img.shields.io/badge/Koin-4.2.1-purple)](https://insert-koin.io/)
+[![JUnit 6](https://img.shields.io/badge/JUnit-6-25A162?style=flat&logo=junit5&logoColor=white)](https://junit.org/)
 
 OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and PostgreSQL Database for managing planets, missions and astronauts in a fictional space exploration system.
 > This API serves as the backend for the [OrbitalNexus Android application](https://github.com/gblrodrigues/OrbitalNexus-android).
@@ -10,6 +10,7 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and Postgr
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Running the Project](#running-the-project)
+* [Testing](#testing)
 * [API Documentation](#api-documentation)
 * [API Endpoints](#api-endpoints)
 * [Example Responses](#example-responses)
@@ -21,15 +22,16 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and Postgr
 
 | Category | Technology | Why |
 |----------|------------|-----|
-| Language | [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge\&logo=kotlin\&logoColor=white)](https://kotlinlang.org/) | Main development language (my favorite 💜)
-| Framework | [![Ktor](https://img.shields.io/badge/Ktor-087CFA?style=for-the-badge\&logo=ktor\&logoColor=white)](https://ktor.io/) | Backend framework for building REST APIs
-| SQL Framework | [![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=for-the-badge)](https://www.jetbrains.com/exposed/) | SQL framework used for database access and queries
-| Database | [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/) | Primary relational database used for persistent data storage
-| Database Migrations | [![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=for-the-badge&logo=flyway&logoColor=white)](https://documentation.red-gate.com/flyway) | Versioned database schema and seed data
-| API Documentation | [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539?style=for-the-badge&logo=swagger&logoColor=white)](https://swagger.io/specification/) | API specification standard
-| Documentation UI | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/) | Interactive API documentation
-| Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://insert-koin.io/) | Dependency injection framework
-| Serialization | [![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=for-the-badge)](https://kotlinlang.org/docs/serialization.html) | JSON serialization and deserialization
+| Language | [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat\&logo=kotlin\&logoColor=white)](https://kotlinlang.org/) | Main development language (my favorite 💜)
+| Framework | [![Ktor](https://img.shields.io/badge/Ktor-087CFA?style=flat\&logo=ktor\&logoColor=white)](https://ktor.io/) | Backend framework for building REST APIs
+| SQL Framework | [![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=flat)](https://www.jetbrains.com/exposed/) | SQL framework used for database access and queries
+| Database | [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/) | Primary relational database used for persistent data storage
+| Database Migrations | [![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=flat&logo=flyway&logoColor=white)](https://documentation.red-gate.com/flyway) | Versioned database schema and seed data
+| Testing | [![JUnit 6](https://img.shields.io/badge/JUnit-6-25A162?style=flat&logo=junit5&logoColor=white)](https://junit.org/) [![MockK](https://img.shields.io/badge/MockK-7F52FF?style=flat)](https://mockk.io/) | Unit testing and mocking dependencies |
+| API Documentation | [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539?style=flat&logo=swagger&logoColor=white)](https://swagger.io/specification/) | API specification standard
+| Documentation UI | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=flat&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/) | Interactive API documentation
+| Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://insert-koin.io/) | Dependency injection framework
+| Serialization | [![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=flat)](https://kotlinlang.org/docs/serialization.html) | JSON serialization and deserialization
 
 ## Features
 
@@ -76,12 +78,10 @@ cd OrbitalNexus-api
 Run the application:
 
 ```bash
-1. Clone the repository
-
-2. Start PostgreSQL
+1. Start PostgreSQL
 docker compose up -d
 
-3. Run the application
+2. Run the application
 ./gradlew run
 ```
 
@@ -91,6 +91,23 @@ The server will start at:
 
 ```text
 http://localhost:8080
+```
+
+## Testing
+
+Unit tests for `MissionServiceImpl`, using JUnit 6 and MockK.
+
+The tests cover:
+* Retrieving missions by ID and listing missions.
+* Falling back to the default locale (`en-US`).
+* Filtering missions by planet.
+* Retrieving astronauts and planets associated with missions.
+* Handling missing missions, missing planets and empty results.
+
+Run the test suite:
+
+```bash
+./gradlew test
 ```
 
 ## API Documentation
@@ -197,56 +214,55 @@ Supported locales:
 ## Project Structure
 
 ```text
-src/main/kotlin/com/gblrod/orbitalnexus
-│
-├── application
-│   ├── Application.kt
-│
-├── database
-│   ├── mapper
-│   ├── table
-│   ├── DatabaseConfig.kt
-│   ├── DatabaseFactory.kt
-│   ├── FlywayFactory.kt
-|
-├── di
-│   └── AppModule.kt
-│
-├── model
-│   ├── astronaut
-│   ├── error
-│   ├── mission
-│   ├── planet
-│
-├── plugins
-│   ├── Koin.kt
-│   ├── Routing.kt
-│   ├── Serialization.kt
-│   ├── Serialization.kt
-│   └── Swagger.kt
-│
-├── repository
-│   ├── impl
-│   └── interfaces
-│
-├── routes
-│   ├── AstronautRoutes.kt
-│   ├── MissionRoutes.kt
-│   ├── PlanetRoutes.kt
-│
-├── service
-│   ├── impl
-│   └── interfaces
-│
-├── util
-│   └── Locales.kt
-│
-└── resources
-    ├── api
-    │   └── openapi.yaml
-    ├── assets
-    └── db
-        └── migration
+src/
+├── main/
+│   ├── kotlin/com/gblrod/orbitalnexus/
+│   │   ├── application/
+│   │   │   └── Application.kt
+│   │   ├── database/
+│   │   │   ├── mapper/
+│   │   │   ├── table/
+│   │   │   ├── DatabaseConfig.kt
+│   │   │   ├── DatabaseFactory.kt
+│   │   │   └── FlywayFactory.kt
+│   │   ├── di/
+│   │   │   └── AppModule.kt
+│   │   ├── model/
+│   │   │   ├── astronaut/
+│   │   │   ├── error/
+│   │   │   ├── mission/
+│   │   │   └── planet/
+│   │   ├── plugins/
+│   │   │   ├── Database.kt
+│   │   │   ├── Koin.kt
+│   │   │   ├── Routing.kt
+│   │   │   ├── Serialization.kt
+│   │   │   ├── StatusPages.kt
+│   │   │   └── Swagger.kt
+│   │   ├── repository/
+│   │   │   ├── impl/
+│   │   │   └── interfaces/
+│   │   ├── routes/
+│   │   │   ├── AstronautRoutes.kt
+│   │   │   ├── MissionRoutes.kt
+│   │   │   └── PlanetRoutes.kt
+│   │   ├── service/
+│   │   │   ├── impl/
+│   │   │   └── interfaces/
+│   │   └── util/
+│   │       └── Locales.kt
+│   └── resources/
+│       ├── api/
+│       │   └── openapi.yaml
+│       ├── assets/
+│       └── db/
+│           └── migration/
+└── test/
+    └── kotlin/com/gblrod/orbitalnexus/
+        └── service/
+            └── impl/
+                └── MissionServiceImplTest.kt
+
 ```
 
 ## Architecture
@@ -268,18 +284,7 @@ Database schema managed by Flyway
 Dependencies managed by Koin
 ```
 
-## Related Projects
-
-### OrbitalNexus Android
-Android client built with:
-* Kotlin
-* Jetpack Compose
-* Retrofit
-* Koin
-* MVVM + StateFlow
-
-🔗 [Repository](https://github.com/gblrodrigues/OrbitalNexus-android)
-
 ## Contact
-
-🔗 [LinkedIn](https://www.linkedin.com/in/gblrodrigues/)
+<a href="https://www.linkedin.com/in/gblrodrigues">
+  <img src="https://img.shields.io/badge/LinkedIn-100%2B-0077B5?style=flat&logo=linkedin&logoColor=white" alt="My LinkedIn Profile"/>
+</a>
