@@ -21,7 +21,7 @@ info:
     url: https://www.linkedin.com/in/gblrodrigues/
 
 servers:
-  - url: http://localhost:8080
+  - url: /
     description: Local development server
 
 tags:
@@ -422,7 +422,7 @@ components:
         image:
           type: string
           nullable: true
-          example: http://localhost:8080/assets/astronauts/Luna_Carter_image_profile.png
+          example: https://orbitalnexus-api.onrender.com/assets/astronauts/Luna_Carter_image_profile.png
 
     ErrorResponse:
       type: object
