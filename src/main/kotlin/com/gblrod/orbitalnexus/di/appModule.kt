@@ -14,7 +14,7 @@ import com.gblrod.orbitalnexus.service.impl.MissionServiceImpl
 import com.gblrod.orbitalnexus.service.impl.PlanetServiceImpl
 import org.koin.dsl.module
 
-val AppModule = module {
+fun appModule(publicBaseUrl: String) = module {
     // Planet
     single<PlanetRepository> {
         PlanetRepositoryImpl()
@@ -46,7 +46,8 @@ val AppModule = module {
 
     single<AstronautService> {
         AstronautServiceImpl(
-            repository = get()
+            repository = get(),
+            publicBaseUrl = publicBaseUrl
         )
     }
 }
