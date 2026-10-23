@@ -23,7 +23,7 @@ fun Route.missionRoutes(
             if (id == null) {
                 call.respond(
                     status = HttpStatusCode.BadRequest,
-                    message = ErrorResponse(message = "Invalid mission id")
+                    message = ErrorResponse(message = missionIdInvalid())
                 )
                 return@get
             }
@@ -36,7 +36,7 @@ fun Route.missionRoutes(
             } else {
                 call.respond(
                     status = HttpStatusCode.NotFound,
-                    message = ErrorResponse(message = "Mission not found")
+                    message = ErrorResponse(message = missionIdNotFound(id))
                 )
             }
         }
@@ -47,7 +47,7 @@ fun Route.missionRoutes(
             if (id == null) {
                 call.respond(
                     status = HttpStatusCode.BadRequest,
-                    message = ErrorResponse(message = "Invalid mission id")
+                    message = ErrorResponse(message = missionIdInvalid())
                 )
                 return@get
             }
@@ -58,7 +58,7 @@ fun Route.missionRoutes(
             if (mission == null) {
                 call.respond(
                     status = HttpStatusCode.NotFound,
-                    message = ErrorResponse(message = "Mission not found")
+                    message = ErrorResponse(message = missionIdNotFound(id))
                 )
                 return@get
             }
@@ -74,7 +74,7 @@ fun Route.missionRoutes(
             if (id == null) {
                 call.respond(
                     status = HttpStatusCode.BadRequest,
-                    message = ErrorResponse(message = "Invalid mission id")
+                    message = ErrorResponse(message = missionIdInvalid())
                 )
                 return@get
             }
@@ -85,7 +85,7 @@ fun Route.missionRoutes(
             if (planet == null) {
                 call.respond(
                     status = HttpStatusCode.NotFound,
-                    message = ErrorResponse(message = "Mission or planet not found")
+                    message = ErrorResponse(message = missionOrPlanetNotFound(id))
                 )
                 return@get
             }
@@ -94,3 +94,7 @@ fun Route.missionRoutes(
         }
     }
 }
+
+private fun missionIdNotFound(id: Int): String = "Mission with id '$id' not found"
+private fun missionOrPlanetNotFound(id: Int): String = "Mission with id '$id' not found, or its associated planet was not found"
+private fun missionIdInvalid(): String = "Invalid mission id"

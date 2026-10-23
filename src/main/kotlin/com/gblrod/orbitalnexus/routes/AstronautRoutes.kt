@@ -21,7 +21,7 @@ fun Route.astronautRoutes(
             if (id == null) {
                 call.respond(
                     status = HttpStatusCode.BadRequest,
-                    message = ErrorResponse(message = "Invalid astronaut id")
+                    message = ErrorResponse(message = astronautIdInvalid())
                 )
                 return@get
             }
@@ -33,9 +33,12 @@ fun Route.astronautRoutes(
             } else {
                 call.respond(
                     status = HttpStatusCode.NotFound,
-                    message = ErrorResponse(message = "Astronaut not found")
+                    message = ErrorResponse(message = astronautIdNotFound(id))
                 )
             }
         }
     }
 }
+
+private fun astronautIdNotFound(id: Int): String = "Astronaut with id '$id' not found"
+private fun astronautIdInvalid(): String = "Invalid astronaut id"
