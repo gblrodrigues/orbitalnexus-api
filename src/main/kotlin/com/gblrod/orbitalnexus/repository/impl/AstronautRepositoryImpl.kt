@@ -4,6 +4,7 @@ import com.gblrod.orbitalnexus.database.table.AstronautsTable
 import com.gblrod.orbitalnexus.database.mapper.toAstronaut
 import com.gblrod.orbitalnexus.model.astronaut.Astronaut
 import com.gblrod.orbitalnexus.repository.AstronautRepository
+import org.jetbrains.exposed.v1.core.SortOrder
 import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
@@ -24,6 +25,7 @@ class AstronautRepositoryImpl : AstronautRepository {
             AstronautsTable
                 .selectAll()
                 .where { AstronautsTable.missionId eq missionId }
+                .orderBy(AstronautsTable.id to SortOrder.ASC)
                 .map { it.toAstronaut() }
         }
     }
@@ -32,6 +34,7 @@ class AstronautRepositoryImpl : AstronautRepository {
         return transaction {
             AstronautsTable
                 .selectAll()
+                .orderBy(AstronautsTable.id to SortOrder.ASC)
                 .map { it.toAstronaut() }
         }
     }
