@@ -25,17 +25,18 @@ fun Route.planetRoutes(
             if (id == null) {
                 call.respond(
                     status = HttpStatusCode.BadRequest,
-                    message = ErrorResponse(message = "Invalid planet id")
+                    message = ErrorResponse(message = planetIdInvalid())
                 )
                 return@get
             }
+
             val locale = call.locale()
             val planet = planetService.getById(id, locale)
 
             if (planet == null) {
                 call.respond(
                     status = HttpStatusCode.NotFound,
-                    message = ErrorResponse(message = "Planet not found")
+                    message = ErrorResponse(message = planetIdNotFound(id))
                 )
                 return@get
             }
@@ -49,17 +50,18 @@ fun Route.planetRoutes(
             if (id == null) {
                 call.respond(
                     status = HttpStatusCode.BadRequest,
-                    message = ErrorResponse(message = "Invalid planet id")
+                    message = ErrorResponse(message = planetIdInvalid())
                 )
                 return@get
             }
+
             val locale = call.locale()
             val planet = planetService.getById(id, locale)
 
             if (planet == null) {
                 call.respond(
                     status = HttpStatusCode.NotFound,
-                    message = ErrorResponse(message = "Planet not found")
+                    message = ErrorResponse(message = planetIdNotFound(id))
                 )
                 return@get
             }
@@ -70,3 +72,6 @@ fun Route.planetRoutes(
         }
     }
 }
+
+private fun planetIdNotFound(id: Int): String = "Planet with id '$id' not found"
+private fun planetIdInvalid(): String = "Invalid planet id"
