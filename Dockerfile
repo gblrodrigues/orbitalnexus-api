@@ -1,4 +1,4 @@
-FROM eclipse-temurin:26-jdk AS build
+FROM eclipse-temurin:21-jdk AS build
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY . .
 RUN chmod +x ./gradlew \
     && ./gradlew --no-daemon clean test buildFatJar
 
-FROM eclipse-temurin:26-jre
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
