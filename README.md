@@ -8,6 +8,7 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and Postgr
 and astronauts in a fictional space exploration system.
 
 * [Technologies Used](#technologies-used)
+* [Live API](#live-api)
 * [Features](#features)
 * [Running the Project](#running-the-project)
 * [Testing](#testing)
@@ -16,6 +17,7 @@ and astronauts in a fictional space exploration system.
 * [Example Responses](#example-responses)
 * [Localization](#localization)
 * [Project Structure](#project-structure)
+* [Architecture](#architecture)
 * [Contact](#contact)
 
 ## Technologies Used
@@ -32,6 +34,26 @@ and astronauts in a fictional space exploration system.
 | Documentation UI | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=flat&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/) | Interactive API documentation
 | Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://insert-koin.io/) | Dependency injection framework
 | Serialization | [![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=flat)](https://kotlinlang.org/docs/serialization.html) | JSON serialization and deserialization
+| Deployment | [![Render](https://img.shields.io/badge/Render-black?style=flat&logo=render&logoColor=46E3B7)](https://render.com) | Cloud hosting and application deployment
+
+## Live API
+
+The API is publicly available on Render.
+
+**Base URL**
+
+```text
+https://orbitalnexus-api.onrender.com
+```
+
+**Swagger**
+
+```text
+https://orbitalnexus-api.onrender.com/swagger
+```
+
+> **Note:** This API is hosted on Render's free instance. After 15 minutes without incoming traffic, the service spins down. The first request after
+> inactivity may take around a minute while the service starts up again.
 
 ## Features
 
@@ -67,27 +89,42 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/gblrodrigues/OrbitalNexus-api.git
+cd OrbitalNexus-api
 ```
 
-Navigate to the project folder:
+Configure the required environment variables in your IDE or terminal before starting the application. Gradle does not load `.env` files automatically.
+
+```env
+DATABASE_URL=jdbc:postgresql://localhost:5432/orbitalnexus
+DATABASE_DRIVER=org.postgresql.Driver
+DATABASE_USER=<postgres_user>
+DATABASE_PASSWORD=<postgres_password>
+PUBLIC_BASE_URL=http://localhost:8080
+```
+
+Use the PostgreSQL credentials configured in your Docker Compose file.
+
+Start PostgreSQL:
 
 ```bash
-cd OrbitalNexus-api
+docker compose up -d
 ```
 
 Run the application:
 
 ```bash
-1. Start PostgreSQL
-docker compose up -d
-
-2. Run the application
 ./gradlew run
 ```
 
-> Flyway automatically applies all database migrations during application startup.
+On Windows PowerShell, use:
 
-The server will start at:
+```powershell
+.\gradlew.bat run
+```
+
+> Flyway automatically applies database migrations during application startup.
+
+The API will be available at:
 
 ```text
 http://localhost:8080
@@ -112,12 +149,19 @@ Run the test suite:
 
 ## API Documentation
 
-After starting the application, the interactive API documentation is available at:
+Swagger UI is available at:
+
+### Local
 
 ```text
 http://localhost:8080/swagger
 ```
-The API specification follows the OpenAPI 3.0 standard and is served through Swagger UI, allowing every endpoint to be explored and tested directly from the browser.
+
+### Production
+
+```text
+https://orbitalnexus-api.onrender.com/swagger
+```
 
 ## API Endpoints
 
@@ -175,7 +219,7 @@ GET /v1/missions/1
     "name": "Luna Carter",
     "nationality": "Terran",
     "missionId": 1,
-    "image": "/assets/astronauts/Luna_Carter_image_profile.png"
+    "image": "https://orbitalnexus-api.onrender.com/assets/astronauts/Luna_Carter_image_profile.png"
   }
 ]
 ```
