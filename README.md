@@ -1,5 +1,6 @@
 # OrbitalNexus API
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.4.21-7F52FF)](https://kotlinlang.org/)
+[![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=flat&logo=openjdk&logoColor=white)](https://openjdk.org/projects/jdk/21/)
 [![Ktor](https://img.shields.io/badge/Ktor-3.5-087CFA)](https://ktor.io/)
 [![Koin](https://img.shields.io/badge/Koin-4.2.1-purple)](https://insert-koin.io/)
 [![JUnit 6](https://img.shields.io/badge/JUnit-6-25A162?style=flat&logo=junit5&logoColor=white)](https://junit.org/)
@@ -22,19 +23,20 @@ and astronauts in a fictional space exploration system.
 
 ## Technologies Used
 
-| Category | Technology | Why |
-|----------|------------|-----|
-| Language | [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat\&logo=kotlin\&logoColor=white)](https://kotlinlang.org/) | Main development language (my favorite 💜)
-| Framework | [![Ktor](https://img.shields.io/badge/Ktor-087CFA?style=flat\&logo=ktor\&logoColor=white)](https://ktor.io/) | Backend framework for building REST APIs
-| SQL Framework | [![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=flat)](https://www.jetbrains.com/exposed/) | SQL framework used for database access and queries
-| Database | [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/) | Primary relational database used for persistent data storage
-| Database Migrations | [![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=flat&logo=flyway&logoColor=white)](https://documentation.red-gate.com/flyway) | Versioned database schema and seed data
-| Testing | [![JUnit 6](https://img.shields.io/badge/JUnit-6-25A162?style=flat&logo=junit5&logoColor=white)](https://junit.org/) [![MockK](https://img.shields.io/badge/MockK-7F52FF?style=flat)](https://mockk.io/) | Unit testing and mocking dependencies |
-| API Documentation | [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539?style=flat&logo=swagger&logoColor=white)](https://swagger.io/specification/) | API specification standard
-| Documentation UI | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=flat&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/) | Interactive API documentation
-| Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://insert-koin.io/) | Dependency injection framework
-| Serialization | [![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=flat)](https://kotlinlang.org/docs/serialization.html) | JSON serialization and deserialization
-| Deployment | [![Render](https://img.shields.io/badge/Render-black?style=flat&logo=render&logoColor=46E3B7)](https://render.com) | Cloud hosting and application deployment
+| Category             | Technology                                                                                                                                                                                               | Why                                                          |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| Language             | [![Kotlin](https://img.shields.io/badge/Kotlin-2.4.21-7F52FF?style=flat\&logo=kotlin\&logoColor=white)](https://kotlinlang.org/)                                                                         | Main development language (my favorite 💜)                   |
+| Runtime              | [![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=flat&logo=openjdk&logoColor=white)](https://openjdk.org/)                                                                                  | JVM runtime used to build and run the application            |
+| Framework            | [![Ktor](https://img.shields.io/badge/Ktor-087CFA?style=flat\&logo=ktor\&logoColor=white)](https://ktor.io/)                                                                                             | Backend framework for building REST APIs                     |
+| SQL Framework        | [![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=flat)](https://www.jetbrains.com/exposed/)                                                                                                 | SQL framework used for database access and queries           |
+| Database             | [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)                                                                  | Primary relational database used for persistent data storage |
+| Database Migrations  | [![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=flat&logo=flyway&logoColor=white)](https://documentation.red-gate.com/flyway)                                                                | Versioned database schema and seed data                      |
+| Testing              | [![JUnit 6](https://img.shields.io/badge/JUnit-6-25A162?style=flat&logo=junit5&logoColor=white)](https://junit.org/) [![MockK](https://img.shields.io/badge/MockK-7F52FF?style=flat)](https://mockk.io/) | Unit testing and mocking dependencies                        |
+| API Documentation    | [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539?style=flat&logo=swagger&logoColor=white)](https://swagger.io/specification/)                                                                 | API specification standard                                   |
+| Documentation UI     | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=flat&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/)                                                            | Interactive API documentation                                |
+| Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://insert-koin.io/)                                                                                      | Dependency injection framework                               |
+| Serialization        | [![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=flat)](https://kotlinlang.org/docs/serialization.html)                                                         | JSON serialization and deserialization                       |
+| Deployment           | [![Render](https://img.shields.io/badge/Render-black?style=flat&logo=render&logoColor=46E3B7)](https://render.com)                                                                                       | Cloud hosting and application deployment                     |
 
 ## Live API
 
@@ -52,8 +54,8 @@ https://orbitalnexus-api.onrender.com
 https://orbitalnexus-api.onrender.com/swagger
 ```
 
-> **Note:** This API is hosted on Render's free instance. After 15 minutes without incoming traffic, the service spins down. The first request after
-> inactivity may take around a minute while the service starts up again.
+> **Note:** This API is hosted on Render's free instance. After 15 minutes without incoming traffic, the service spins 
+> down. The first request after inactivity may take around a minute while the service starts up again.
 
 ## Features
 
@@ -88,8 +90,8 @@ https://orbitalnexus-api.onrender.com/swagger
 Clone the repository:
 
 ```bash
-git clone https://github.com/gblrodrigues/OrbitalNexus-api.git
-cd OrbitalNexus-api
+git clone https://github.com/gblrodrigues/orbitalnexus-api.git
+cd orbitalnexus-api
 ```
 
 Configure the required environment variables in your IDE or terminal before starting the application. Gradle does not load `.env` files automatically.
@@ -132,14 +134,15 @@ http://localhost:8080
 
 ## Testing
 
-Unit tests for `MissionServiceImpl`, using JUnit 6 and MockK.
+Unit tests for `MissionServiceImpl`, `PlanetServiceImpl` and `AstronautServiceImpl`, using JUnit 6 and MockK.
 
 The tests cover:
-* Retrieving missions by ID and listing missions.
-* Falling back to the default locale (`en-US`).
+* Listing and retrieving missions and planets, including fallback to the default locale (`en-US`).
 * Filtering missions by planet.
 * Retrieving astronauts and planets associated with missions.
-* Handling missing missions, missing planets and empty results.
+* Listing and retrieving astronauts, including retrieving astronauts by mission ID.
+* Building public image URLs for astronaut profile images while preserving `null` image values.
+* Handling missing entities and empty results.
 
 Run the test suite:
 
@@ -166,34 +169,34 @@ https://orbitalnexus-api.onrender.com/swagger
 ## API Endpoints
 
 ### Planets
-| Method | Endpoint | Description |
-|----------|------------|-----|
-| GET | /v1/planets | List all planets
-| GET | /v1/planets/{id} | Find planet by ID |
-| GET | /v1/planets/{id}/missions | List missions by planet |
+| Method | Endpoint                  | Description             |
+|--------|---------------------------|-------------------------|
+| GET    | /v1/planets               | List all planets        |
+| GET    | /v1/planets/{id}          | Find planet by ID       |
+| GET    | /v1/planets/{id}/missions | List missions by planet |
 
 ### Missions
-| Method | Endpoint | Description |
-|----------|------------|-----|
-| GET | /v1/missions | List all missions
-| GET | /v1/missions/{id} | Find mission by ID
-| GET | /v1/missions/{id}/astronauts | List astronauts by mission
-| GET | /v1/missions/{id}/planet | Retrieve mission planet
+| Method | Endpoint                     | Description                |
+|--------|------------------------------|----------------------------|
+| GET    | /v1/missions                 | List all missions          |
+| GET    | /v1/missions/{id}            | Find mission by ID         |
+| GET    | /v1/missions/{id}/astronauts | List astronauts by mission |
+| GET    | /v1/missions/{id}/planet     | Retrieve mission planet    |
 
 ### Astronauts
-| Method | Endpoint | Description |
-|----------|------------|-----|
-| GET | /v1/astronauts | List all astronauts
-| GET | /v1/astronauts/{id} | Find astronaut by ID
+| Method | Endpoint            | Description          |
+|--------|---------------------|----------------------|
+| GET    | /v1/astronauts      | List all astronauts  |
+| GET    | /v1/astronauts/{id} | Find astronaut by ID |
 
 ### Localization Examples
 
-| Endpoint | Description |
-|----------|------------|
-| GET /v1/planets?lang=pt-BR | Returns planets in Portuguese
-| GET /v1/planets/1?lang=es-ES | Returns a planet in Spanish
-| GET /v1/missions?lang=pt-BR | Returns missions in Portuguese
-| GET /v1/missions/1?lang=es-ES | Returns a mission in Spanish
+| Endpoint                      | Description                    |
+|-------------------------------|--------------------------------|
+| GET /v1/planets?lang=pt-BR    | Returns planets in Portuguese  |
+| GET /v1/planets/1?lang=es-ES  | Returns a planet in Spanish    |
+| GET /v1/missions?lang=pt-BR   | Returns missions in Portuguese |
+| GET /v1/missions/1?lang=es-ES | Returns a mission in Spanish   |
 
 ## Example Responses
 
@@ -305,8 +308,9 @@ src/
     └── kotlin/com/gblrod/orbitalnexus/
         └── service/
             └── impl/
-                └── MissionServiceImplTest.kt
-
+                ├── AstronautServiceImplTest.kt
+                ├── MissionServiceImplTest.kt
+                └── PlanetServiceImplTest.kt
 ```
 
 ## Architecture
